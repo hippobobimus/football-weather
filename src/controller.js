@@ -65,9 +65,11 @@ class Controller {
   static get #nextGameDateString() {
     let d = nextSaturday(new Date());
 
-    return `${d.getDay().toString().padStart(2, '0')}-${d.getMonth().toString().padStart(2, '0')}-${d.getFullYear()}`;
+    return `${d.getDay().toString().padStart(2, '0')}-${d
+      .getMonth()
+      .toString()
+      .padStart(2, '0')}-${d.getFullYear()}`;
   }
-
 
   static get #startTime() {
     let start = nextSaturday(new Date());
