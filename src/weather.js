@@ -30,22 +30,28 @@ class WeatherView {
   constructor(root) {
     this.root = root;
 
+    this.root.style.display = 'flex';
+
     this.root.querySelector('.rain-icon').src = RaindropIcon;
     this.root.querySelector('.humidity-icon').src = HumidityIcon;
     this.root.querySelector('.uvi-icon').src = UVIcon;
   }
 
   update(
+    time,
     temperature,
     feelsLike,
     iconCode,
     description,
+    subDescription,
     pop,
     humidity,
     windSpeed,
     gustSpeed,
     uvi
   ) {
+    this.root.querySelector('.time').innerText = time;
+
     this.root.querySelector('.weather-icon').src =
       WeatherView.ICON_MAP[iconCode];
 
@@ -53,8 +59,9 @@ class WeatherView {
     this.root.querySelector('.feels-like').innerText = Math.round(feelsLike);
 
     this.root.querySelector('.description').innerText = description;
+    this.root.querySelector('.sub-description').innerText = subDescription;
 
-    this.root.querySelector('.rain-chance').innerText = Math.round(pop);
+    this.root.querySelector('.rain-chance').innerText = Math.round(pop * 100);
 
     this.root.querySelector('.humidity').innerText = Math.round(humidity);
 

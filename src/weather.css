@@ -3,12 +3,13 @@
   box-shadow: 3px 3px 5px grey;
   background-color: white;
   display: flex;
+  gap: 20px;
   margin: 20px;
   padding: 20px;
 }
 
 .weather-entry {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -32,6 +33,11 @@
 .weather img.weather-icon {
   height: 100px;
   margin-left: -10px;
+}
+
+.weather .sub-description {
+  font-size: 0.8rem;
+  font-style: italic;
 }
 
 .weather ul.additional-forecast {
