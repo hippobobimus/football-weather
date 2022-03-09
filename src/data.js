@@ -1,17 +1,30 @@
-import { differenceInHours, differenceInCalendarDays } from 'date-fns';
+import {
+  differenceInCalendarDays,
+  differenceInHours,
+  differenceInMilliseconds,
+  hoursToMilliseconds,
+} from 'date-fns';
 
 class Data {
-  static API_KEY = '10d7b76aba9296ef529b2938eb2b6604';
+  #apiKey;
 
-  static UNITS = 'metric';
+  #latitude;
 
-  constructor(lat, lon) {
-    this.latitude = lat;
-    this.longitude = lon;
+  #longitude;
+
+  #units;
+
+  constructor(apiKey, latitude, longitude, units) {
+    this.#apiKey = apiKey;
+    this.#latitude = latitude;
+    this.#longitude = longitude;
+    this.#units = units;
   }
 
   async #getRawForecast() {
-    let url = `http://api.openweathermap.org/data/2.5/onecall?lat=${this.latitude}&lon=${this.longitude}&appid=${Data.API_KEY}&units=${Data.UNITS}`;
+    let url = `http://api.openweathermap.org/data/2.5/onecall?lat=${
+      this.#latitude
+    }&lon=${this.#longitude}&appid=${this.#apiKey}&units=${this.#units}`;
 
     let response = await fetch(url, { mode: 'cors' });
     let json = await response.json();
@@ -52,6 +65,11 @@ class Data {
     }
 
     return result;
+  }
+
+  static hourlyForecastsAreAvailable(endTime) {
+    let now = new Date();
+    return differenceInMilliseconds(endTime, now) < hoursToMilliseconds(48);
   }
 
   static #parseMorningForecast(d) {

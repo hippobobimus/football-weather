@@ -5,6 +5,21 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+  font-size: 16px;
+}
+
+#header {
+  background-color: lightgray;
+  box-shadow: 3px 0 5px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 50px;
+}
+
 #content {
   display: flex;
   justify-content: center;
