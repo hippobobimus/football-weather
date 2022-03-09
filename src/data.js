@@ -22,7 +22,7 @@ class Data {
   }
 
   async #getRawForecast() {
-    let url = `http://api.openweathermap.org/data/2.5/onecall?lat=${
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${
       this.#latitude
     }&lon=${this.#longitude}&appid=${this.#apiKey}&units=${this.#units}`;
 
