@@ -69,7 +69,7 @@ class Data {
 
   static hourlyForecastsAreAvailable(endTime) {
     let now = new Date();
-    return differenceInMilliseconds(endTime, now) < hoursToMilliseconds(48);
+    return differenceInMilliseconds(endTime, now) < hoursToMilliseconds(47);
   }
 
   static #parseMorningForecast(d) {
